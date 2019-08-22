@@ -1,4 +1,4 @@
-class bitflags {
+class simpleflags {
   // 修改自：https://github.com/binarymax/bitflags/blob/master/bitflags.js
   constructor(s) {
     this._cols = 8;
@@ -85,4 +85,4 @@ class bitflags {
   }
 }
 
-module.exports = bitflags;
+module.exports = simpleflags;
