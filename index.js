@@ -1,10 +1,12 @@
+const base64 = require('base64-js');
+
 class simpleflags {
   // 修改自：https://github.com/binarymax/bitflags/blob/master/bitflags.js
   constructor(s) {
     this._cols = 8;
     this._shift = 3;
     if (s) {
-      const str = polaris.base64Decode(s);
+      const str = base64.toByteArray(s);
       this._rows = str.length;
       this._buf = new ArrayBuffer(this._rows);
       this._bin = new Uint8Array(this._buf);
@@ -81,7 +83,7 @@ class simpleflags {
   }
 
   get base64str() {
-    return polaris.base64Encode(String.fromCharCode.apply(null, new Uint8Array(this._buf)));
+    return base64.fromByteArray(String.fromCharCode.apply(null, new Uint8Array(this._buf)));
   }
 }
 

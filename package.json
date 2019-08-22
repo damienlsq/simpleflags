@@ -1,6 +1,6 @@
 {
   "name": "@makebestgame/simpleflags",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/damienlsq/simpleflags/issues"
   },
-  "homepage": "https://github.com/damienlsq/simpleflags#readme"
+  "homepage": "https://github.com/damienlsq/simpleflags#readme",
+  "dependencies": {
+    "base64-js": "~1.3.1"
+  }
 }
