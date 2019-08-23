@@ -6,13 +6,9 @@ class simpleflags {
     this._cols = 8;
     this._shift = 3;
     if (s) {
-      const str = base64.toByteArray(s);
-      this._rows = str.length;
-      this._buf = new ArrayBuffer(this._rows);
-      this._bin = new Uint8Array(this._buf);
-      for (let i = 0; i < this._rows; i++) {
-        this._bin[i] = str.charCodeAt(i);
-      }
+      this._bin = base64.toByteArray(s);
+      this._buf = this._bin.buffer;
+      this._rows = this._bin.length;
     } else {
       // 默认8位
       this._rows = (7 >> this._shift) + 1;
@@ -32,7 +28,7 @@ class simpleflags {
   set(offset, bool) {
     const row = offset >> this._shift;
 
-    if (row > this._rows) {
+    if (row >= this._rows) {
       // 需要扩容
       this._rows = row + 1;
       const newBuffer = new ArrayBuffer(this._rows);
@@ -83,7 +79,7 @@ class simpleflags {
   }
 
   get base64str() {
-    return base64.fromByteArray(String.fromCharCode.apply(null, new Uint8Array(this._buf)));
+    return base64.fromByteArray(this._bin);
   }
 }
 
