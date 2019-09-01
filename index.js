@@ -32,7 +32,7 @@ class simpleflags {
       // 需要扩容
       this._rows = row + 1;
       const newBuffer = new ArrayBuffer(this._rows);
-      new Uint8Array(newBuffer).set(this._buf);
+      new Uint8Array(newBuffer).set(this._bin);
       this._buf = newBuffer;
       this._bin = new Uint8Array(this._buf);
     }
